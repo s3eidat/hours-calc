@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Hours Calc — Free Time Card &amp; Hours Worked Calculator | S3eidat Tools</title>
+<meta name="description" content="Weekly time card calculator: several shifts a day, overnight shifts, breaks, daily and weekly overtime with a multiplier, hourly pay, CSV export and print. Free, private, saved only in your browser.">
+<meta property="og:title" content="Hours Calc — free time card calculator">
+<meta property="og:description" content="Hours worked, overtime and pay for the week. Runs 100% in your browser.">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<!--s3:seo-->
+<link rel="canonical" href="https://s3eidat.github.io/hours-calc/">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d0f12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S3eidat Tools">
+<meta property="og:url" content="https://s3eidat.github.io/hours-calc/">
+<meta property="og:image" content="https://s3eidat.github.io/hours-calc/screenshot.png">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hours Calc — Time card and hours worked calculator">
+<meta name="twitter:description" content="Time card and hours worked calculator. Free, private and runs 100% in your browser: no sign-up, no uploads.">
+<meta name="twitter:image" content="https://s3eidat.github.io/hours-calc/screenshot.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Hours Calc", "url": "https://s3eidat.github.io/hours-calc/", "description": "Time card and hours worked calculator. Free, private and runs 100% in your browser: no sign-up, no uploads.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "image": "https://s3eidat.github.io/hours-calc/screenshot.png", "author": {"@type": "Person", "name": "s3eidat", "url": "https://github.com/s3eidat"}}</script>
+<!--/s3:seo-->
+</head>
+<body data-tool="hours-calc">
+<main class="s3-main">
+  <section class="s3-hero no-print">
+    <h1>Hours Calc</h1>
+    <p>Fill in your shifts for the week and get hours worked, overtime and pay. Overnight shifts and several shifts a day just work. Saved in this browser only.</p>
+  </section>
+
+  <section class="card no-print">
+    <div class="hc-settings">
+      <label class="field">Week starts on
+        <select class="select" id="weekStart">
+          <option value="6">Saturday</option>
+          <option value="0">Sunday</option>
+          <option value="1">Monday</option>
+        </select>
+      </label>
+      <label class="field">Week of (optional)
+        <input class="input" type="date" id="weekOf">
+      </label>
+      <label class="field">Hourly rate
+        <input class="input" id="rate" inputmode="decimal" autocomplete="off" placeholder="0">
+      </label>
+      <label class="field">Currency
+        <input class="input" id="cur" maxlength="6" autocomplete="off" placeholder="JD" dir="auto">
+      </label>
+      <label class="field">Daily overtime after (h)
+        <input class="input" id="dailyOT" inputmode="decimal" autocomplete="off" placeholder="off">
+      </label>
+      <label class="field">Weekly overtime after (h)
+        <input class="input" id="weeklyOT" inputmode="decimal" autocomplete="off" placeholder="off">
+      </label>
+      <label class="field">Overtime pay ×
+        <input class="input" id="mult" inputmode="decimal" autocomplete="off" placeholder="1.5">
+      </label>
+      <label class="field">Round each shift
+        <select class="select" id="round">
+          <option value="0">No rounding</option>
+          <option value="5">Nearest 5 min</option>
+          <option value="6">Nearest 6 min (0.1 h)</option>
+          <option value="15">Nearest 15 min</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="card mt hc-sheet">
+    <div class="row between">
+      <h2 id="sheetTitle">Time card</h2>
+      <div class="row no-print">
+        <button class="btn ghost small" id="clear"><svg class="i"><use href="#i-trash"/></svg>Clear week</button>
+        <button class="btn small" id="print"><svg class="i"><use href="#i-file"/></svg>Print</button>
+        <button class="btn small" id="csv"><svg class="i"><use href="#i-download"/></svg>CSV</button>
+        <button class="btn small primary" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy summary</button>
+      </div>
+    </div>
+    <div class="stats mt" id="totals"></div>
+    <div class="hc-days mt" id="days"></div>
+    <p class="faint mt" id="otNote"></p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
